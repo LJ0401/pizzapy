@@ -1,25 +1,3 @@
-print("Program'Game Over' 2.0")
-print("same", "message", "as before")
-print("just",
-      "a bit"
-      "bigger")
-print("Here",end=" ")
-print("it is...")
-
-
-#Fancy Credits
-#演示转义序列
-print("\t\t\tFancy Credits")
-print("\t\t\t \\ \\ \\ \\ \\ \\ \\")
-print("\t\t\t\tby")
-print("\t\t\tMichael Dawson")
-print("\t\t\t \\ \\ \\ \\ \\ \\ \\")
-print("\nSpecial thanks goes out to:")
-print("My hair stylist, Henry \'The Great,\'who never says \"can\'t.\"")
-#响一下电脑的蜂鸣器
-print("\a")
-input("\n\nPress the enter key to exit.")
-
 #Silly Strings
 #演示字符串的连接和重复
 print("You can concatenate two "+"strings with the '+' operator.")
