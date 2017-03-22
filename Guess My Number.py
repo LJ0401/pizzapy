@@ -10,3 +10,18 @@ print("You rolled a", die1, "and a", die2, "for a total of", total)
 input("\nPress the enter key to exit.")
 
 
+#设置初始值
+the_number = random.randint(1,100)
+guess = int(input("Take a guess: "))
+tries = 1
+
+#猜测循环
+while guess != the_number:
+    if guess > the_number:
+       print("Lower...")
+    else:
+        print("Higher...")
+
+    guess = int(input("Take a guess:")
+    tries += 1
+                
