@@ -21,3 +21,15 @@ for value in (None, "Hi!"):
         print(float(value))
     except (TypeError, ValueError):
         print("Something went wrong!")
+
+#try/except/else
+try:
+    num = float(input("\nEnter a number:"))
+except ValueError:
+    print("That was not a numer!")
+else:
+    print("You entered the number", num)
+
+input("\n\nPress teh enter key to exit.")
+
+
