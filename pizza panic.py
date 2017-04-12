@@ -126,10 +126,10 @@ class Pizza(games.Sprite):
     def update(self):
        #首先判断sprite 是否快要越过屏幕边界（各个方向），如果是就反转相应的速度分量
        """Reverse a velocity component if edge of screen reached."""
-        if self.right > games.screen.width or self.left < 0:
+       if self.right > games.screen.width or self.left < 0:
             self.dx = -self.dx
 
-        if self.bottom > games.screen.height or self.top <0:
+       if self.bottom > games.screen.height or self.top <0:
             self.dy = -self.dy
             
 #收尾工作
@@ -151,3 +151,95 @@ def main():
 #走你
 main()
                           
+#Moving Pan
+#演示鼠标输入
+
+from livewires import games
+
+games.init(screen_width = 640, screen_height = 480, fps = 50)
+
+#读取鼠标的X和y坐标（创建表示平底锅的Pan类）
+class Pan(games.Sprite):
+    """A pan controlled by the mouse."""
+    def update(self):
+        """Move to mouse coordinates."""
+        self.x = games.mouse.x
+        self.y = games.mouse.y
+#设置背景图片
+    def main():
+        wall_image = games.load_image("wall.jpg", transparent = False)
+        games.screen.background = wall_image
+
+        pan_image = games.load_image("pan.bmp")
+        the_pan = pan(image = pan_image,
+                      x = games.mouse.x,
+                      y = games.mouse.y)
+        games.screen.add(the_pan)
+
+#设置鼠标光标的可见性
+        games.mouse.is_visible = False
+
+#捕获图形屏幕的输入
+        games.screen.event_grab = True
+#刷新屏幕上的所有东西
+        games.screen.mainloop()
+
+#开播
+main()
+
+#Slippery Pizza Program
+#演示sprite的碰撞检测
+
+from livewires import games
+import random
+
+games.init(screen_width = 640, screen_height = 480, fps = 50)
+
+#添加检测碰撞的代码
+
+class Pan(games.Sprite):
+    """A pan controlled by the mouse."""
+    def update(self):
+        """Move to mouse position."""
+        self.x = games.mouse.x
+        self.y = games.mouse.y
+        self.check_collide()
+
+    def check_collide(self):
+        """Check for collision with pizza."""
+        for pizza in self.overlapping_sprites:
+            pizza.handle_collide()
+#碰撞处理
+class Pan(pizza.Sprite):
+    """A slippery pizza."""
+    def handle_collide(self):
+        """Move a random screen location."""
+        self.x = random.randrange(games.screen.width)
+        self.y = random.randrange(games.screen.height)
+#收尾工作
+    def main():
+        wall_image = games.load_image("wall.jpg", transparent = False)
+        games.screen.background = wall_image
+
+        pizza_image = games.load_image("pan.bmp")
+        pizza_x= random.randrange(games.screen.width)
+        pizza_y = random.randrange(games.screen.height)
+        the_pizaa = Pizza(image = pizza_image, x = pizza_x, y = pizza_y)
+        games.screen.add(the_pizza)
+
+        pan_image = games.load_image("pan.bmg")
+        the_pan = pan(image = pan_image,
+                      x = games.mouse.x,
+                      y = games.mouse.y)
+        games.screen.add(the_pan)
+
+        games.mouse.is_visible = False
+
+        games.mouse.event_grab = True
+
+        games.screen.mainloop()
+
+#发轫之始
+main()
+
+        
